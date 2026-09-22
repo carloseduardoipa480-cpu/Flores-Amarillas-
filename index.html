@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- VISTA PREVIA PARA WHATSAPP Y REDES SOCIALES -->
+  <!-- VISTA PREVIA PARA WHATSAPP -->
   <title>Una Sorpresa Para Ti 🌼❤️</title>
   <meta property="og:title" content="Tengo una sorpresa para ti 🌼❤️" />
-  <meta property="og:description" content="Haz clic aquí para abrir tu detalle de Flores Amarillas ✨" />
+  <meta property="og:description" content="Haz clic aquí para ver tu detalle de Flores Amarillas ✨" />
   <meta property="og:image" content="https://images.unsplash.com/photo-1591886960571-74d43a9d4166?q=80&w=600" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#ffde59">
@@ -17,7 +17,6 @@
       --bg-color: #0b0d19;
       --yellow-primary: #ffde59;
       --yellow-glow: #ff914d;
-      --green-stem: #4caf50;
     }
 
     * {
@@ -77,7 +76,7 @@
     p {
       font-size: 1.1rem;
       color: #e0e0e0;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .btn {
@@ -98,52 +97,34 @@
       box-shadow: 0 0 25px rgba(255, 222, 89, 0.7);
     }
 
-    .garden {
+    /* Árbol de Corazón SVG */
+    .tree-container {
+      width: 100%;
+      max-width: 320px;
+      margin: 1rem 0;
       display: flex;
       justify-content: center;
-      align-items: flex-end;
-      gap: 15px;
-      height: 200px;
-      margin: 2rem 0;
-      width: 100%;
-    }
-
-    .flower {
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      transform-origin: bottom center;
-      animation: grow 2s ease-out forwards;
+      animation: growTree 2s ease-out forwards;
     }
 
-    .petals {
-      font-size: 2.5rem;
-      animation: pulse 2s infinite ease-in-out alternate;
+    .tree-svg {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 10px rgba(255, 222, 89, 0.3));
     }
 
-    .stem {
-      width: 6px;
-      height: 100px;
-      background-color: var(--green-stem);
-      border-radius: 3px;
-    }
-
-    @keyframes grow {
-      0% { transform: scale(0); opacity: 0; }
+    @keyframes growTree {
+      0% { transform: scale(0.3); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
     }
 
-    @keyframes pulse {
-      from { transform: scale(1); }
-      to { transform: scale(1.1); }
-    }
-
     .lyrics-container {
-      min-height: 80px;
+      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
+      padding: 0.5rem 1rem;
     }
 
     .lyric-line {
@@ -181,6 +162,7 @@
   <div class="stars" id="stars"></div>
 
   <div class="container">
+    <!-- PANTALLA INICIAL -->
     <div id="start-screen" class="screen">
       ✨ 🌼 ✨
       <h1>Hola ❤️</h1>
@@ -188,35 +170,68 @@
       <button class="btn" id="start-btn">DESCUBRIR ❤️</button>
     </div>
 
+    <!-- PANTALLA PRINCIPAL CON ÁRBOL DE CORAZÓN -->
     <div id="main-screen" class="screen hidden">
-      <div class="garden">
-        <div class="flower" style="animation-delay: 0.2s;">
-          <div class="petals">🌼</div>
-          <div class="stem"></div>
-        </div>
-        <div class="flower" style="animation-delay: 0.6s;">
-          <div class="petals">🌼</div>
-          <div class="stem" style="height: 130px;"></div>
-        </div>
-        <div class="flower" style="animation-delay: 1s;">
-          <div class="petals">🌼</div>
-          <div class="stem"></div>
-        </div>
+      <div class="tree-container">
+        <!-- SVG del árbol en forma de corazón con flores amarillas -->
+        <svg class="tree-svg" viewBox="0 0 300 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tronco -->
+          <path d="M140 310 L160 310 L156 220 C156 220 170 180 150 160 C130 180 144 220 144 220 L140 310 Z" fill="#6d4c41"/>
+          
+          <!-- Hojas/Grama base -->
+          <circle cx="150" cy="140" r="90" fill="#fbc02d" opacity="0.2"/>
+          
+          <!-- Grupo de Corazón de Flores Amarillas -->
+          <g id="flower-heart">
+            <!-- Capa base de corazón -->
+            <path d="M150 70 C120 20 60 30 60 90 C60 140 150 200 150 200 C150 200 240 140 240 90 C240 30 180 20 150 70 Z" fill="#ffd54f"/>
+            
+            <!-- Floripondios / Girasoles detallados dispersos -->
+            <!-- Centro -->
+            <circle cx="150" cy="90" r="12" fill="#e65100"/>
+            <circle cx="150" cy="90" r="10" fill="#fff59d"/>
+            <!-- Izquierda arriba -->
+            <circle cx="110" cy="70" r="14" fill="#ffb300"/>
+            <circle cx="110" cy="70" r="6" fill="#3e2723"/>
+            <!-- Derecha arriba -->
+            <circle cx="190" cy="70" r="14" fill="#ffb300"/>
+            <circle cx="190" cy="70" r="6" fill="#3e2723"/>
+            <!-- Izquierda centro -->
+            <circle cx="90" cy="110" r="15" fill="#fbc02d"/>
+            <circle cx="90" cy="110" r="7" fill="#4e342e"/>
+            <!-- Derecha centro -->
+            <circle cx="210" cy="110" r="15" fill="#fbc02d"/>
+            <circle cx="210" cy="110" r="7" fill="#4e342e"/>
+            <!-- Abajo pico del corazón -->
+            <circle cx="150" cy="150" r="13" fill="#ffa000"/>
+            <circle cx="150" cy="150" r="5" fill="#3e2723"/>
+            
+            <!-- Detalles de minitopos de flores -->
+            <circle cx="130" cy="50" r="8" fill="#ffe082"/><circle cx="170" cy="50" r="8" fill="#ffe082"/>
+            <circle cx="100" cy="90" r="9" fill="#ffd54f"/><circle cx="200" cy="90" r="9" fill="#ffd54f"/>
+            <circle cx="125" cy="120" r="10" fill="#ffb300"/><circle cx="175" cy="120" r="10" fill="#ffb300"/>
+            <circle cx="140" cy="170" r="8" fill="#fbc02d"/><circle cx="160" cy="170" r="8" fill="#fbc02d"/>
+          </g>
+        </svg>
       </div>
 
       <div class="lyrics-container">
         <div id="lyric" class="lyric-line">♪ Flores Amarillas - Floricienta ♪</div>
       </div>
 
-      <div style="margin-top: 1.5rem;">
+      <div style="margin-top: 1rem;">
         <p>Gracias por estar en mi vida ❤️</p>
       </div>
 
-      <audio id="audio" src="cancion.mp3"></audio>
+      <!-- Control de audio con preload -->
+      <audio id="audio" preload="auto">
+        <source src="cancion.mp3" type="audio/mpeg">
+      </audio>
     </div>
   </div>
 
   <script>
+    // Estrellas de fondo
     const starsContainer = document.getElementById('stars');
     for (let i = 0; i < 40; i++) {
       const star = document.createElement('div');
@@ -229,11 +244,12 @@
       starsContainer.appendChild(star);
     }
 
+    // Tiempos de letra
     const lyricsData = [
       { time: 0, text: "♪ (Intro Instrumental) ♪" },
       { time: 15, text: "Él la estaba esperando con una flor amarilla..." },
       { time: 22, text: "Ella sabía que él sabía que algún día pasaría..." },
-      { time: 29, text: "Que vendría a buscarla con sus flores amarillas..." },
+      { time: 29, text: "Que vendria a buscarla con sus flores amarillas..." },
       { time: 38, text: "No te apures, no detengas el instante..." },
       { time: 45, text: "El encuentro está planeado de antes..." },
       { time: 52, text: "Y la espera no fue en vano, ya sabías que era para ti..." }
@@ -248,7 +264,13 @@
     startBtn.addEventListener('click', () => {
       startScreen.classList.add('hidden');
       mainScreen.classList.remove('hidden');
-      audio.play();
+
+      // Forzar la reproducción con promesa para asegurar permisos del navegador
+      audio.play().then(() => {
+        console.log("Audio reproduciendo con éxito");
+      }).catch(error => {
+        console.log("Error al reproducir audio:", error);
+      });
     });
 
     audio.addEventListener('timeupdate', () => {
