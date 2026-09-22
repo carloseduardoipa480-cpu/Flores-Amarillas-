@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- VISTA PREVIA PARA WHATSAPP Y REDES SOCIALES -->
+  <title>Una Sorpresa Para Ti 🌼❤️</title>
+  <meta property="og:title" content="Tengo una sorpresa para ti 🌼❤️" />
+  <meta property="og:description" content="Haz clic aquí para abrir tu detalle de Flores Amarillas ✨" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1591886960571-74d43a9d4166?q=80&w=600" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#ffde59">
+
+  <style>
+    :root {
+      --bg-color: #0b0d19;
+      --yellow-primary: #ffde59;
+      --yellow-glow: #ff914d;
+      --green-stem: #4caf50;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #1a1c2e 0%, var(--bg-color) 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      flex-grow: 1;
+      transition: opacity 0.8s ease;
+    }
+
+    .hidden {
+      display: none !important;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: var(--yellow-primary);
+      text-shadow: 0 0 10px rgba(255, 222, 89, 0.5);
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--yellow-primary), var(--yellow-glow));
+      color: #000;
+      font-weight: bold;
+      font-size: 1.2rem;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 222, 89, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 222, 89, 0.7);
+    }
+
+    .garden {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 15px;
+      height: 200px;
+      margin: 2rem 0;
+      width: 100%;
+    }
+
+    .flower {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform-origin: bottom center;
+      animation: grow 2s ease-out forwards;
+    }
+
+    .petals {
+      font-size: 2.5rem;
+      animation: pulse 2s infinite ease-in-out alternate;
+    }
+
+    .stem {
+      width: 6px;
+      height: 100px;
+      background-color: var(--green-stem);
+      border-radius: 3px;
+    }
+
+    @keyframes grow {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    .lyrics-container {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .lyric-line {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--yellow-primary);
+      text-shadow: 0 0 8px rgba(255, 222, 89, 0.6);
+    }
+
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle linear infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <div class="container">
+    <div id="start-screen" class="screen">
+      ✨ 🌼 ✨
+      <h1>Hola ❤️</h1>
+      <p>Tengo una sorpresa especial para ti...</p>
+      <button class="btn" id="start-btn">DESCUBRIR ❤️</button>
+    </div>
+
+    <div id="main-screen" class="screen hidden">
+      <div class="garden">
+        <div class="flower" style="animation-delay: 0.2s;">
+          <div class="petals">🌼</div>
+          <div class="stem"></div>
+        </div>
+        <div class="flower" style="animation-delay: 0.6s;">
+          <div class="petals">🌼</div>
+          <div class="stem" style="height: 130px;"></div>
+        </div>
+        <div class="flower" style="animation-delay: 1s;">
+          <div class="petals">🌼</div>
+          <div class="stem"></div>
+        </div>
+      </div>
+
+      <div class="lyrics-container">
+        <div id="lyric" class="lyric-line">♪ Flores Amarillas - Floricienta ♪</div>
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <p>Gracias por estar en mi vida ❤️</p>
+      </div>
+
+      <audio id="audio" src="cancion.mp3"></audio>
+    </div>
+  </div>
+
+  <script>
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 40; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.width = `${Math.random() * 3 + 1}px`;
+      star.style.height = star.style.width;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      starsContainer.appendChild(star);
+    }
+
+    const lyricsData = [
+      { time: 0, text: "♪ (Intro Instrumental) ♪" },
+      { time: 15, text: "Él la estaba esperando con una flor amarilla..." },
+      { time: 22, text: "Ella sabía que él sabía que algún día pasaría..." },
+      { time: 29, text: "Que vendría a buscarla con sus flores amarillas..." },
+      { time: 38, text: "No te apures, no detengas el instante..." },
+      { time: 45, text: "El encuentro está planeado de antes..." },
+      { time: 52, text: "Y la espera no fue en vano, ya sabías que era para ti..." }
+    ];
+
+    const startBtn = document.getElementById('start-btn');
+    const startScreen = document.getElementById('start-screen');
+    const mainScreen = document.getElementById('main-screen');
+    const audio = document.getElementById('audio');
+    const lyricDisplay = document.getElementById('lyric');
+
+    startBtn.addEventListener('click', () => {
+      startScreen.classList.add('hidden');
+      mainScreen.classList.remove('hidden');
+      audio.play();
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      const currentTime = audio.currentTime;
+      let currentText = lyricDisplay.innerText;
+
+      for (let i = 0; i < lyricsData.length; i++) {
+        if (currentTime >= lyricsData[i].time) {
+          currentText = lyricsData[i].text;
+        }
+      }
+
+      lyricDisplay.innerText = currentText;
+    });
+  </script>
+</body>
+</html>
